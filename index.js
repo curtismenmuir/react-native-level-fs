@@ -4,7 +4,8 @@ var fs = require("level-filesystem");
 
 var db = levelup("level-fs", { db: leveldown });
 
-fs.existsSync = function(dirPath) {
+var fileSystem = fs(db);
+fileSystem.existsSync = function(dirPath) {
   return fs.exists(dirPath, function(err) {
     if (err) {
       return false;
@@ -14,4 +15,4 @@ fs.existsSync = function(dirPath) {
   });
 };
 
-module.exports = fs(db);
+module.exports = fileSystem;
