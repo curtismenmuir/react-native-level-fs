@@ -6,7 +6,8 @@ var db = levelup("level-fs", { db: leveldown });
 
 var fileSystem = fs(db);
 fileSystem.existsSync = function(dirPath) {
-  return fs.exists(dirPath, function(err) {
+  console.log("Getting here 1 " + dirPath);
+  fs.exists(dirPath, function(err) {
     if (err) {
       return false;
     } else {
